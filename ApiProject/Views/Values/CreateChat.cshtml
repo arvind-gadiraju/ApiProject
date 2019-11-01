@@ -1,0 +1,142 @@
+﻿@inject INames _names
+
+@model ApiProject.Models.Inputs
+@{
+    ViewData["Title"] = "CreateChat";
+}
+
+
+
+
+    <form asp-controller="Values" asp-action="CreateChat" method="post" class="mt-3">
+        <div class="form-group row">
+            <label asp-for="Api_Key" class="col-sm-2 col-form-label">Api Key</label>
+            <div class="col-sm-10">
+                <input asp-for="Api_Key" class="form-control" placeholder="Name">
+                <span asp-validation-for="Api_Key"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="Domain_Name" class="col-sm-2 col-form-label">Domain Name</label>
+            <div class="col-sm-10">
+                <input asp-for="Domain_Name" class="form-control" placeholder="Name">
+                <span asp-validation-for="Domain_Name"></span>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class='input-group date' id='datetimepicker1'>
+                <label asp-for="From" class="col-sm-2 col-form-label">Start Time</label>
+                <div class="col-sm-10">
+                    <input asp-for="From" class="form-control" placeholder=" DD-MM-YYYY HH:MM:SS">
+                    <p style="color:forestgreen;margin-left:5%">Input must be in <mark style="background-color:transparent;color:red;">DD-MM-YYYY HH:MM:SS</mark> Format</p>
+                    <span asp-validation-for="From"></span>
+                </div>v 
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="To" class="col-sm-2 col-form-label">End Time</label>
+            <div class="col-sm-10">
+                <input asp-for="To" class="form-control" placeholder=" DD-MM-YYYY HH:MM:SS">
+                <p style="color:forestgreen;margin-left:5%">Input must be in <mark style="background-color:transparent;color:red;">DD-MM-YYYY HH:MM:SS</mark> Format</p>
+                <span asp-validation-for="To"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="NO_Of_Messages" class="col-sm-2 col-form-label">No of Messages</label>
+            <div class="col-sm-10">
+                <input asp-for="NO_Of_Messages" class="form-control" placeholder="">
+                <span asp-validation-for="NO_Of_Messages"></span>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label asp-for="Input_Message" class="col-sm-2 col-form-label">Input Message</label>
+            <div class="col-sm-10">
+                <input asp-for="Input_Message" class="form-control" placeholder="">
+                <span asp-validation-for="Input_Message"></span>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label asp-for="channel" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <select asp-for="channel" class="custom-select mr-sm-2" id="seeAnotherField">
+                    <option value="SMS">SMS</option>
+                    <option value="facebook">facebook</option>
+                    <option value="email">email</option>
+                     <option value="Live_Chat">email</option>
+                </select>
+
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="Input_Message" class="col-sm-2 col-form-label">Input Message</label>
+            <div class="col-sm-10">
+                <input asp-for="Input_Message" class="form-control" placeholder="">
+                <span asp-validation-for="Input_Message"></span>
+            </div>
+        </div>
+
+        <div class="form-group row" id="SMSDiv">
+            <label asp-for="Asset_ID" class="col-sm-2 col-form-label">Asset Id</label>
+            <div class="col-sm-10">
+                <input asp-for="Asset_ID" class="form-control" placeholder="" id="SMSField">
+                <span asp-validation-for="Asset_ID"> </span>
+            </div>
+        </div>
+
+        <div class="form-group row" id="SMSDiv1">
+            <label asp-for="Destination_Id" class="col-sm-2 col-form-label">Destination Id</label>
+            <div class="col-sm-10"> 
+                <input asp-for="Destination_Id" class="form-control" placeholder="" id="SMSField">
+                <span asp-validation-for="Destination_Id"> </span>
+            </div>
+        </div>
+        <div id="FacebookDiv">
+            <div class="form-group row">
+                <label asp-for="PSID" class="col-sm-2 col-form-label">PPID</label>
+                <div class="col-sm-10">
+                    <input asp-for="PSID" class="form-control" placeholder="" id="FacebookField">
+                    <span asp-validation-for="PSID"> </span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Page_Id" class="col-sm-2 col-form-label">Page Id</label>
+                <div class="col-sm-10">
+                    <input asp-for="Page_Id" class="form-control" placeholder="" id="FacebookField">
+                    <span asp-validation-for="Page_Id"> </span>
+                </div>
+            </div>
+        </div>
+        <div id="EmailDiv">
+            <div class="form-group row">
+                <label asp-for="Agent" class="col-sm-2 col-form-label">Agent mail</label>
+                <div class="col-sm-10">
+                    <input asp-for="Agent" class="form-control" placeholder="" id="">
+                    <span asp-validation-for="Agent"> </span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="End_user" class="col-sm-2 col-form-label">End User</label>
+                <div class="col-sm-10">
+                    <input asp-for="End_user" class="form-control" placeholder="" id="">
+                    <span asp-validation-for="End_user"> </span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" id="submit" class="btn btn-primary">Create</button>
+            </div>
+        </div>
+    </form> 
