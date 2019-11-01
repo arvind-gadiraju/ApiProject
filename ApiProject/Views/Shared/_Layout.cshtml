@@ -1,35 +1,100 @@
 ﻿<!DOCTYPE html>
 
-<html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <environment include="Development">
-        <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
-        <script src="~/lib/jquery/jquery.js"></script>
-        <script src="~/lib/bootstrap/js/bootstrap.js"></script>
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"
-              asp-fallback-href="~/lib/bootstrap/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
-              asp-suppress-fallback-integrity="true" />
-    </environment>
-
-    <link href="~/css/site.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel='stylesheet'
+          type='text/css' />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
     <title>@ViewBag.Title</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            padding: 0px;
+            margin: 0px;
+            font-family: 'Roboto', sans-serif;
+            background-color: #fdfdfd;
+            font-size: 13px;
+        }
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script>
+        .main-div {
+            height: 100%;
+        }
+
+        .container-main {
+            background-color: #eee;
+            padding-right: 60px;
+            padding-left: 60px;
+            border-radius: 6px;
+            height: 100%;
+            padding-top: 30px;
+            padding-bottom: 48px;
+            background-color: #fff;
+        }
+        .form-group .col-sm-6 label {
+            margin-bottom: 0px;
+            font-weight: 500;
+        }
+        .form-group .col-sm-6 {
+            margin-bottom:20px;
+        }
+        .navbar-static-top {
+            margin-bottom: 0px;
+            background-color: #fdfdfd;
+        }
+        h3 {
+            margin-top: 0px;
+        }
+        input, select {
+            border-radius: 2px !important;
+            box-shadow: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><img src="~/images/new.png" style="height:100%;display: inline-block;margin-right: 10px;"/><span style="font-size: 14px;">API TESTING</span></a>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="main-div container">
+
+
+        <div class="container-main">
+            @RenderBody()
+        </div>
+
+    </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script>       
         $(document).ready(function () {
+            $('.datepicker').daterangepicker({
+                opens: 'left',
+                singleDatePicker: true,
+                timePicker: true,
+                locale: {
+                    format: 'M/DD hh:mm A'
+                }
+            }, function (start, end, label) {
+                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+            });
             $('#EmailDiv').hide();
             $('#FacebookDiv').hide();
-        });
-
-    </script>
-    <script>
-        $(document).ready(function () {
             $("#seeAnotherField").change(function () {
                 if ($(this).val() == "SMS") {
                     $('#SMSDiv').show();
@@ -53,23 +118,6 @@
             });
         });
     </script>
-</head>
-<body>
-    
-    <div class="container">
-        <nav>
-            <a class="navbar-brand">
-                <img src="~/images/new.png" width="60" height="60" style="margin-left:10%;">
-            </a>
-        </nav>
-        <div>
-            @RenderBody()
-        </div>
-
-          @if (IsSectionDefined("Scripts"))
-        {
-             @RenderSection("Scripts", required: false)
-        }
-    </div>
 </body>
+
 </html>
