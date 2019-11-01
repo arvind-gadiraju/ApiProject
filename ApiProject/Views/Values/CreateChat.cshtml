@@ -14,110 +14,114 @@
 <form asp-controller="Values" asp-action="CreateChat" method="post" class="mt-3">
 
     <div class="form-group row">
-        
+
         <div class="col-lg-6 col-sm-6">
             <label asp-for="Api_Key">Api Key</label>
             <input asp-for="Api_Key" class="form-control" placeholder="Name">
             <span asp-validation-for="Api_Key"></span>
         </div>
-       
+
         <div class="col-lg-6 col-sm-6">
             <label asp-for="Domain_Name">Domain Name</label>
             <input asp-for="Domain_Name" class="form-control" placeholder="Name">
             <span asp-validation-for="Domain_Name"></span>
         </div>
-           
-            <div class="col-lg-6 col-sm-6 date" id='datetimepicker1'>
-                <label asp-for="From">Start Time</label>
-                <input asp-for="From" class="form-control datepicker" type="text" placeholder=" DD-MM-YYYY HH:MM:SS">
-                <small>Input must be in <mark style="background-color:transparent;color:red;">DD-MM-YYYY HH:MM:SS</mark> Format</small>
-                <span asp-validation-for="From"></span>
-            </div>
 
-        
+        <div class="col-lg-6 col-sm-6 date" id='datetimepicker1'>
+            <label asp-for="From">Start Time</label>
+            <input asp-for="From" class="form-control datepicker" type="text" placeholder=" DD-MM-YYYY HH:MM:SS">
+            <small>Input must be in <mark style="background-color:transparent;color:red;">DD-MM-YYYY HH:MM:SS</mark> Format</small>
+            <span asp-validation-for="From"></span>
+        </div>
+
+
         <div class="col-lg-6 col-sm-6">
             <label asp-for="To">End Time</label>
             <input asp-for="To" class="form-control datepicker" type="text" placeholder=" DD-MM-YYYY HH:MM:SS">
             <small>Input must be in <mark style="background-color:transparent;color:red;">DD-MM-YYYY HH:MM:SS</mark> Format</small>
             <span asp-validation-for="To"></span>
         </div>
-        
+
         <div class="col-lg-6 col-sm-6">
             <label asp-for="NO_Of_Messages">No of Messages</label>
             <input asp-for="NO_Of_Messages" class="form-control" placeholder="">
             <span asp-validation-for="NO_Of_Messages"></span>
         </div>
-        
+
         <div class="col-lg-6 col-sm-6">
             <label asp-for="Input_Message">Input Message</label>
             <input asp-for="Input_Message" class="form-control" placeholder="">
             <span asp-validation-for="Input_Message"></span>
         </div>
-        
+
         <div class="col-lg-6 col-sm-6">
             <label asp-for="channel"></label>
             <select asp-for="channel" class="form-control" id="seeAnotherField">
                 <option value="SMS">SMS</option>
-                <option value="facebook">facebook</option>
-                <option value="email">email</option>
-                <option value="Live_Chat">email</option>
+                <option value="facebook">Facebook</option>
+                <option value="email">Email</option>
+                <option value="Live_Chat">Live chat</option>
             </select>
         </div>
-        
+
         <div class="col-lg-6 col-sm-6">
             <label asp-for="Input_Message">Input Message</label>
             <input asp-for="Input_Message" class="form-control" placeholder="">
             <span asp-validation-for="Input_Message"></span>
         </div>
-    
-        <div class="col-lg-6 col-sm-6" id="SMSDiv">
-            <label asp-for="Asset_ID">Asset Id</label>
-            <input asp-for="Asset_ID" class="form-control" placeholder="" id="SMSField">
-            <span asp-validation-for="Asset_ID"> </span>
-        </div>
-   
-        <div class="col-lg-6 col-sm-6"  id="SMSDiv1">
-            <label asp-for="Destination_Id">Destination Id</label>
-            <input asp-for="Destination_Id" class="form-control" placeholder="" id="SMSField">
-            <span asp-validation-for="Destination_Id"> </span>
-        </div>
+        <div class="clearfix"></div>
+        <div class="channelsection" id="SMSDiv">
+            <h5>SMS</h5>
+            <div class="col-lg-6 col-sm-6">
+                <label asp-for="Asset_ID">Asset Id</label>
+                <input asp-for="Asset_ID" class="form-control" placeholder="" id="SMSField">
+                <span asp-validation-for="Asset_ID"> </span>
+            </div>
 
-    <div id="FacebookDiv">
-            
+            <div class="col-lg-6 col-sm-6">
+                <label asp-for="Destination_Id">Destination Id</label>
+                <input asp-for="Destination_Id" class="form-control" placeholder="" id="SMSField">
+                <span asp-validation-for="Destination_Id"> </span>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+        <div id="FacebookDiv" class="channelsection">
+            <h5>Facebook</h5>
             <div class="col-lg-6 col-sm-6">
                 <label asp-for="PSID">PPID</label>
                 <input asp-for="PSID" class="form-control" placeholder="" id="FacebookField">
                 <span asp-validation-for="PSID"> </span>
             </div>
-            
+
             <div class="col-lg-6 col-sm-6">
                 <label asp-for="Page_Id">Page Id</label>
                 <input asp-for="Page_Id" class="form-control" placeholder="" id="FacebookField">
                 <span asp-validation-for="Page_Id"> </span>
             </div>
-
-    </div>
-
-    <div id="EmailDiv">
-           
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+        <div id="EmailDiv" class="channelsection">
+            <h5>Email</h5>
             <div class="col-lg-6 col-sm-6">
                 <label asp-for="Agent">Agent mail</label>
                 <input asp-for="Agent" class="form-control" placeholder="" id="">
                 <span asp-validation-for="Agent"> </span>
             </div>
 
-            
+
             <div class="col-lg-6 col-sm-6">
                 <label asp-for="End_user">End User</label>
                 <input asp-for="End_user" class="form-control" placeholder="" id="">
                 <span asp-validation-for="End_user"> </span>
             </div>
-
-    </div>
-
-    <div >
-        <div class="col-lg-12 col-sm-12">
-            <button type="submit" id="submit" class="btn btn-primary pull-right">Create</button>
+            <div class="clearfix"></div>
         </div>
-    </div>
+        <div class="clearfix"></div>
+        <div>
+            <div class="col-lg-12 col-sm-12">
+                <button type="submit" id="submit" class="btn btn-primary pull-right">Create</button>
+            </div>
+        </div>
 </form>
